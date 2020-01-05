@@ -6,4 +6,4 @@ from .models import Productivity
 class ProductivitySerializer(serializers.ModelSerializer):
   class Meta:
     model = Productivity
-    fields = ('date', 'description')
+    fields = ('date', 'rating', 'description')

@@ -1,6 +1,6 @@
 // Todos:
-// add slider to measure productivity
 // add a login page
+// set up mysql db
 // add a graph to see productivity score and actions per day
 
 // RangeSlider styling: https://reactnativeexample.com/react-native-range-slider-for-android-and-ios/
@@ -42,17 +42,18 @@ import styles from './style';
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { question: "What's your top accomplishment of today?",  data: '', TextInputValueHolder: '', date: new Date().toLocaleDateString(), value: null}
+    this.state = { question: "What's your top accomplishment of today?",  data: '', TextInputValueHolder: '', date: new Date().toLocaleDateString()}
     this.onPress = this.onPress.bind(this);
   }
 
 GetValueFunction = () =>{
 
   const { TextInputValueHolder }  = this.state ;
-  
+  const { low } = this.state ;
+  console.log(low)
     Alert.alert(TextInputValueHolder)
 
-    axios.post('http://10.0.2.2:8000/api/productivities/', { date: this.state.date, description: TextInputValueHolder})
+    axios.post('http://10.0.2.2:8000/api/productivities/', { date: this.state.date, description: TextInputValueHolder, rating: low})
       .then(response => { 
           console.log("POST RESPONSE: " , JSON.stringify(response));
           // alert(JSON.stringify(response))
@@ -94,8 +95,9 @@ render(){
         thumbBorderWidth={2}
         selectionColor="#3df"
         blankColor="#f618"
-        onValueChanged={(low, high, fromUser) => {
-            this.setState({rangeLow: low, rangeHigh: high, fromUser})
+        onValueChanged={low => {
+          console.log(low);
+          this.setState({low})
       }}/>
 
       <View style={styles.inputContainer}>
