@@ -12,14 +12,23 @@ export default StyleSheet.create({
     {
         marginLeft: 15,
         marginRight: 15,
-        // marginBottom: 10,
+        marginBottom: 55,
         height: 80,
         borderColor: 'gray',
-        borderWidth: 2,
+        borderWidth: 1,
+        borderRadius: 15,
         padding: 10,
         color: 'gray',
         fontSize: 18,
    },
+
+   ratingText:
+   {
+        textAlign: 'center',
+        fontSize: 18,
+        color: 'gray',
+        marginBottom: -20
+    },
 
     text:
     {
@@ -34,7 +43,7 @@ export default StyleSheet.create({
         padding: 15,
         margin: 5,
         margin: 15,
-        marginBottom: 150,
+        marginBottom: 30,
    },
 
    saveButtonText: {
